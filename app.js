@@ -19,46 +19,34 @@ function main() {
   $('.shopping-list').on('click', '.shopping-item-toggle', function(event){
     const targetStrike = $(event.currentTarget).parent().siblings(); 
     targetStrike.toggleClass('shopping-item__checked');
-   // .addClass('.shopping-item__checked');
+
   })
 
-  $('submit').submit(function(event){
+  $('#js-shopping-list-form').submit(function(event){
     event.preventDefault();
-  //   $('.shopping-list').append(generateHtml($('#shopping-list-entry').submit(event => {
-  //     event.preventDefault();
-  //     const targetAdd = $(event.currentTarget);
-  //     targetAdd.find('#shopping-list-entry');
-  //   })));
-  // })
-  console.log('what?');
+    const targetAdd = $(event.currentTarget);
+    const userInput = targetAdd.find('#shopping-list-entry').val();
+    $('.shopping-list').append(generateHtml(userInput));
+    event.preventDefault();
 
-  });
+  $('.shopping-list').on('click', '.shopping-item-delete', function (event) {
+    const targetDelete = $(event.currentTarget).parent().parent();
+    targetDelete.remove();
+    });
+  })
 }
 
 $(main());
 
 
 
-function main() {
-  //shopping-item__checked
-  $('.shopping-list').on('click', '.shopping-item-toggle', function(event){
-    const targetStrike = $(event.currentTarget).parent().siblings(); 
-    targetStrike.toggleClass('shopping-item__checked');
-   // .addClass('.shopping-item__checked');
-  })
+// $('#js-shopping-list-form').submit(event => {
 
-  $('submit').submit(function(event){
-    event.preventDefault();
-  //   $('.shopping-list').append(generateHtml($('#shopping-list-entry').submit(event => {
-  //     event.preventDefault();
-  //     const targetAdd = $(event.currentTarget);
-  //     targetAdd.find('#shopping-list-entry');
-  //   })));
-  // })
-  console.log('what?');
+//   // const targetAdd = $(event.currentTarget);
 
-  });
-}
-
-$(main());
+//   // console.log(`This is target: ${targetAdd}`);
+//   // const userInput = targetAdd.find('#shopping-list-entry').val();
+//   // console.log(`This is input: ${userInput}`);
+//   event.preventDefault();
+// })}
 
